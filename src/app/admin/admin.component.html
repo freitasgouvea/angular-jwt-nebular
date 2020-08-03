@@ -1,0 +1,45 @@
+<nb-card status="primary">
+    <nb-card-header>
+        <h3 class="text-white">Admin</h3>
+    </nb-card-header>
+    <nb-card-body>
+        <nb-tabset>
+            <nb-tab tabTitle="Users" tabIcon="person-outline" responsive>
+                <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+                <nb-card class="mt-4">
+                    <div class="table-responsive-sm">
+                        <table responsive class="table table-hover">
+                            <thead class="thead text-white bg-secondary">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of users">
+                                    <th scope="row">{{user.id}}</th>
+                                    <td>{{user.firstName}} {{user.lastName}}</td>
+                                    <td>{{user.username}}</td>
+                                    <td>{{user.role}}</td>
+                                    <td>
+                                        <a disabled class="ml-3" nbButton status="warning">Make Admin</a>
+                                        <a (click)="deleteUser(user.id)" class="ml-3" nbButton
+                                            status="danger">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </nb-card>
+            </nb-tab>
+            <nb-tab tabTitle="Other" tabIcon="bell-outline" responsive disabled>
+                <p>List of <strong>transactions</strong>.</p>
+            </nb-tab>
+        </nb-tabset>
+    </nb-card-body>
+</nb-card>
+
+<p>This page can be accessed <u>only by administrators</u>.</p>

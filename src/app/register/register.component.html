@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="offset-md-3 col-md-6">
+        <nb-card accent="info">
+            <nb-card-header>Register on App</nb-card-header>
+            <nb-card-body>
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group row mt-3">
+                        <label for="firstName" class="label col-sm-3 col-form-label">First Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" nbInput fullWidth formControlName="firstName" class="form-control"
+                                placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row mt-3">
+                        <label for="lastName" class="label col-sm-3 col-form-label">Last Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" nbInput fullWidth formControlName="lastName" class="form-control"
+                                placeholder="Last Name" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row mt-3">
+                        <label for="username" class="label col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="text" nbInput fullWidth formControlName="username" class="form-control"
+                                placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                <div *ngIf="f.username.errors.required">Username is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row mt-3">
+                        <label for="password" class="label col-sm-3 col-form-label">Password</label>
+                        <div class="col-sm-9">
+                            <input type="password" nbInput fullWidth formControlName="password" class="form-control"
+                                placeholder="Senha" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Password is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="role" class="label col-sm-3 col-form-label">Role</label>
+                        <div class="offset-sm-3 col-sm-9">
+                            <div class="validation-checkboxes">
+                                <nb-toggle disabled class="ml-3" value="Admin" status="danger">Admin</nb-toggle>
+                                <nb-toggle class="ml-3" formControlName="role" value="User" status="success">User</nb-toggle>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <div class="offset-sm-3 col-sm-9">
+                            <div class="validation-checkboxes">
+                                <nb-checkbox class="ml-3" status="primary">Agree</nb-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <div class="offset-sm-3 col-sm-9">
+                            <button [disabled]="loading" nbButton status="success">
+                                Register
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm ml-3 mr-1"></span>
+                            </button>
+                            <a routerLink="/login" class="ml-3" nbButton status="link">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
