@@ -125,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "laurea-app"
+  "defaultProject": "laurea-app",
+  "cli": {
+    "analytics": false
+  }
 }
